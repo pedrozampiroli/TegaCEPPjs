@@ -6,9 +6,18 @@ var controleLeitura = false;
 const sensor = 3;
 rpio.open(sensor, rpio.INPUT, rpio.PULL_UP_DOWN, rpio.BCM);
 
+
+/* remover futuramente */
+const LEDverde   = 35;
+const LEDamarelo = 37;
+rpio.open(LEDverde, rpio.OUTPUT, rpio.LOW);
+rpio.open(LEDamarelo, rpio.OUTPUT, rpio.LOW);
+/**********************/
+
 export default {
 
   async iniciaLeitura(req, res) {
+    console.log('Iniciou');
     if (!controleLeitura) {
       const { idEquipamento, ipServerCEPP, nomeAplicacao, objetoRequisicaoRest, portaServidor, protocoloComunicacao } = req.body;
       const data = { idEquipamento, ipServerCEPP, nomeAplicacao, objetoRequisicaoRest, portaServidor, protocoloComunicacao };
@@ -24,7 +33,8 @@ export default {
         sensorState = rpio.read(sensor)
         if (sensorState == 0 && sensorLock == 0) {
           try {
-            LedController.acendeVerde('','');
+            //LedController.acendeVerde();
+            rpio.write(LEDverde, rpio.HIGH);
             click++;
             console.log('clicou no botão ' + click);
             sensorLock = 1;
@@ -32,7 +42,8 @@ export default {
               .catch(function (error) {
                 console.log(error);
               });
-              LedController.apagaVerde('','');
+              //LedController.apagaVerde();
+              rpio.write(LEDverde, rpio.LOW);
           } catch (ex) {
             console.error("outer", ex.message);
           }
@@ -55,7 +66,8 @@ export default {
   async paraLeitura(req, res) {
     controleLeitura = false;
     if (leituraEmExecucao) {
-      LedController.acendeAmarelo();
+      //LedController.acendeAmarelo();
+      rpio.write(LEDamarelo, rpio.HIGH);
       return res.send('Leitura do sensor pausada');
     } else {
       return res.send('Não existe leitura em andamento!');
