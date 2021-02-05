@@ -10,58 +10,44 @@ rpio.open(ledvermelho, rpio.OUTPUT, rpio.LOW);
 export default {
 
    async acendeLed(ledName) {
-      let message = '';
       switch (ledName) {
          case 'ledverde':
             rpio.write(ledverde, rpio.HIGH);
-            message = 'Led verde acesso!'
-            break;
+            return 'Led verde acesso!'
          case 'ledamarelo':
             rpio.write(ledamarelo, rpio.HIGH);
-            message = 'Led amarelo acesso!'
-            break;
+            return 'Led amarelo acesso!'
          case 'ledvermelho':
             rpio.write(ledvermelho, rpio.HIGH);
-            message = 'Led vermelho acesso!'
-            break;
+            return 'Led vermelho acesso!'
          case 'todosleds':
             rpio.write(ledverde, rpio.HIGH);
             rpio.write(ledamarelo, rpio.HIGH);
             rpio.write(ledvermelho, rpio.HIGH);
-            message = 'Todos os leds acessos!'
-            break;
+            return 'Todos os leds acessos!'
          default:
-            message = 'Erro ao identificar led: ' + ledName;
-            break;
+            return 'Erro ao identificar led: ' + ledName;
       }
-      return message;
    },
 
-   async acendeLed(ledName) {
-      let message = '';
+   async apagaLed(ledName) {
       switch (ledName) {
          case 'ledverde':
             rpio.write(ledverde, rpio.LOW);
-            message = 'Led verde acesso!'
-            break;
+            return 'Led verde acesso!'
          case 'ledamarelo':
             rpio.write(ledamarelo, rpio.LOW);
-            message = 'Led amarelo acesso!'
-            break;
+            return 'Led amarelo acesso!'
          case 'ledvermelho':
             rpio.write(ledvermelho, rpio.LOW);
-            message = 'Led vermelho acesso!'
-            break;
+            return 'Led vermelho acesso!'
          case 'todosleds':
             rpio.write(ledverde, rpio.LOW);
             rpio.write(ledamarelo, rpio.LOW);
             rpio.write(ledvermelho, rpio.LOW);
-            message = 'Todos os leds acessos!'
-            break;
+            return 'Todos os leds acessos!'
          default:
-            message = 'Erro ao identificar led: ' + ledName;
-            break;
+            return 'Erro ao identificar led: ' + ledName;
       }
-      return message;
    }
 };
