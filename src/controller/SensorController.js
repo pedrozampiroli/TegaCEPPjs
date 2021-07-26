@@ -1,9 +1,11 @@
+require('dotenv').config();
 import LedService from './LedService';
 const axios = require('axios');
-const rpio = require('rpio');
+const rpio  = require('rpio');
 var leituraEmExecucao = false;
 var controleLeitura = false;
-const sensor = 3;
+
+const sensor = process.env.PORTA_SENSOR;
 rpio.open(sensor, rpio.INPUT, rpio.PULL_UP, rpio.BCM);
 
 export default {

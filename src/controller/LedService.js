@@ -1,7 +1,9 @@
-var rpio = require('rpio');
-const ledverde = 37;
-const ledamarelo = 33;
-const ledvermelho = 35;
+require('dotenv').config();
+var rpio  = require('rpio');
+
+const ledverde    = process.env.PORTA_LED_VERDE;
+const ledamarelo  = process.env.PORTA_LED_AMARELO;
+const ledvermelho = process.env.PORTA_LED_VERMELHO;
 
 rpio.open(ledverde, rpio.OUTPUT, rpio.LOW);
 rpio.open(ledamarelo, rpio.OUTPUT, rpio.LOW);
