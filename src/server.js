@@ -6,5 +6,5 @@ app.use(express.json());
 app.use('/', routes);
 
 app.listen(3333, () => {
-   console.log('Server start at http://192.168.100.73:3333');
+   console.log('Server start on port: 3333');
 });

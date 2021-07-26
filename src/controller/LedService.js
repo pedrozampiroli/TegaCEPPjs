@@ -1,7 +1,7 @@
 var rpio = require('rpio');
-const ledverde = 35;
-const ledamarelo = 37;
-const ledvermelho = 33;
+const ledverde = 37;
+const ledamarelo = 33;
+const ledvermelho = 35;
 
 rpio.open(ledverde, rpio.OUTPUT, rpio.LOW);
 rpio.open(ledamarelo, rpio.OUTPUT, rpio.LOW);
@@ -34,18 +34,18 @@ export default {
       switch (ledName) {
          case 'ledverde':
             rpio.write(ledverde, rpio.LOW);
-            return 'Led verde acesso!'
+            return 'Led verde apagado!'
          case 'ledamarelo':
             rpio.write(ledamarelo, rpio.LOW);
-            return 'Led amarelo acesso!'
+            return 'Led amarelo apagado!'
          case 'ledvermelho':
             rpio.write(ledvermelho, rpio.LOW);
-            return 'Led vermelho acesso!'
+            return 'Led vermelho apagado!'
          case 'todosleds':
             rpio.write(ledverde, rpio.LOW);
             rpio.write(ledamarelo, rpio.LOW);
             rpio.write(ledvermelho, rpio.LOW);
-            return 'Todos os leds acessos!'
+            return 'Todos os leds apagados!'
          default:
             return 'Erro ao identificar led: ' + ledName;
       }
