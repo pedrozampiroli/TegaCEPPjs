@@ -15,10 +15,8 @@ export default {
       if (!controleLeitura) {
          const { idEquipamento, ipServerCEPP, nomeAplicacao, objetoRequisicaoRest, portaServidor, protocoloComunicacao } = req.body;
          const data = { idEquipamento, ipServerCEPP, nomeAplicacao, objetoRequisicaoRest, portaServidor, protocoloComunicacao };
-         console.log(data);
          let porta = data.portaServidor == 0 ? '' : ':' + data.portaServidor
          const url = `${data.protocoloComunicacao}://${data.ipServerCEPP}${porta}/${data.nomeAplicacao}/${data.objetoRequisicaoRest}?1,${data.idEquipamento}`;
-         console.log('URL: ' + url);
          var sensorState = 0;
          var sensorLock = 1;
          var click = 0;
