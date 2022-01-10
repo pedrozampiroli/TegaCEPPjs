@@ -11,6 +11,7 @@ export default {
    async apagaLed(req, res) {
       const { led } = req.body;
       let retorno = await LedService.apagaLed(led.toLowerCase());
+      console.log(retorno);
       return res.send(retorno);
    }
 };
