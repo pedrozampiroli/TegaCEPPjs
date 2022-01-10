@@ -16,8 +16,8 @@ fi
 
 
 sudo apt update;
-sudo apt upgrade;
-sudo apt install gcc g++ make;
+sudo apt upgrade -y;
+sudo apt install gcc g++ make -y;
 
 
 curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -;
@@ -25,7 +25,7 @@ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - ;
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list;
 
 
-sudo apt update -y;
+sudo apt update;
 sudo apt install yarn nodejs -y;
 sudo apt install git -y;
 
