@@ -48,7 +48,7 @@ export default {
                 if (rpio.read(sensor) == 0 && sensorLock == 0) {
                     try {
                         click++;
-                        console.log("leitura: " + click);
+                        console.log("leitura " + click);
                         sensorLock = 1;
                         axios.get(url).catch(function (error) {
                             console.log(error);
