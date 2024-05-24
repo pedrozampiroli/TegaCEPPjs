@@ -25,6 +25,7 @@ export default {
                 portaServidor,
                 protocoloComunicacao,
             } = req.body;
+
             const data = {
                 idEquipamento,
                 ipServerCEPP,
@@ -33,13 +34,16 @@ export default {
                 portaServidor,
                 protocoloComunicacao,
             };
+
             let porta = data.portaServidor == 0 ? "" : ":" + data.portaServidor;
             const url = `${data.protocoloComunicacao}://${data.ipServerCEPP}${porta}/${data.nomeAplicacao}/${data.objetoRequisicaoRest}?1,${data.idEquipamento}`;
-            var sensorLock  = 0;
-            var click       = 0;
+            var sensorLock = 0;
+            var click = 0;
+
             controleLeitura = true;
             leituraEmExecucao = true;
             console.log("iniciando");
+
             const leitura = setInterval(() => {
                 //Leitura ao entrar energia no sensor, e bloqueada em seguida.
                 if (rpio.read(sensor) == 1 && sensorLock == 1) {
@@ -62,7 +66,7 @@ export default {
                     leituraEmExecucao = false;
                     clearInterval(leitura);
                 }
-            }, 100);
+            }, process.env.TIMER);
             return res.send("Leitura do sensor iniciada");
         } else {
             console.log("Leitura do equipamento já em execução!");
